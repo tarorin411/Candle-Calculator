@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta name="google-site-verification" content="ICWadNm1UEY-5aRTBxc256vuceTrpLu27thxOlF7GGw" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャンドルワックス量・アロマオイル計算ツール | 手作りキャンドル用</title>
+    <meta name="description"
+        content="キャンドル容器のサイズから、必要なワックス（ソイ・パラフィン等）とアロマオイルの分量を自動計算。円柱・四角柱対応。複数個作成にも対応。ハンドメイド作家・初心者向け。">
+    <meta name="keywords" content="キャンドル,ワックス,計算,ソイワックス,アロマオイル,手作り,ハンドメイド">
+
+    <meta property="og:title" content="キャンドルワックス量計算ツール">
+    <meta property="og:description" content="容器サイズからワックス・アロマオイルの必要量を自動計算！複数個作成にも対応。">
+    <meta property="og:type" content="website">
+
+    <!-- AEO: WebApplication Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "キャンドルワックス量計算ツール",
+        "description": "キャンドル容器のサイズから、必要なワックス（ソイ・パラフィン等）とアロマオイルの分量を自動計算。円柱・四角柱対応。複数個作成にも対応。",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "JPY"
+        },
+        "featureList": [
+            "ワックス必要量の自動計算",
+            "アロマオイル配合量の計算",
+            "円柱・四角柱対応",
+            "容器容量(ml)からの逆算",
+            "複数個作成の合計計算",
+            "各種ワックスの比重対応",
+            "スマートフォン対応"
+        ]
+    }
+    </script>
+
+    <!-- AEO: FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "キャンドルに必要なワックスの量はどうやって計算する？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "キャンドルに必要なワックス量は「容器の体積（cm³）× ワックスの比重」で計算します。円柱の場合は「半径² × 3.14 × 高さ」で体積を求めます。例：直径7cm、高さ8cmの容器なら、3.5² × 3.14 × 8 = 約308cm³。ソイワックス（比重0.9）なら約277gが必要です。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "キャンドルのアロマオイルの配合率は？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "キャンドルのアロマオイル（フレグランスオイル）の配合率は、一般的に5%〜10%が目安です。ソイワックスは香りの拡散が良いため5〜8%程度、パラフィンワックスは8〜10%程度が推奨されます。初心者は6%から始めて調整するのがおすすめです。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "ワックスの比重とは？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "ワックスの比重は水に対する密度の比率です。ソイワックスとパラフィンワックスは約0.9、ミツロウは約0.96、ジェルワックスは約0.86です。同じ体積でも比重が違うとワックスの重さが変わるため、正確な計量には比重を考慮する必要があります。"
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "容器の容量(ml)からワックス量を計算するには？",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "容器の容量がmlで記載されている場合、1ml = 1cm³なので、容量 × ワックスの比重で計算できます。例：200mlの容器にソイワックス（比重0.9）を入れる場合、200 × 0.9 = 180gのワックスが必要です。"
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- AEO: HowTo Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "キャンドルのワックス量を計算する方法",
+        "description": "容器のサイズから必要なワックスとアロマオイルの量を計算する手順",
+        "totalTime": "PT1M",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "ワックスの種類を選択",
+                "text": "使用するワックスの種類を選びます。ソイワックス、パラフィン、ミツロウ、ジェルワックスから選択できます。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "入力方法を選択",
+                "text": "容器のサイズを入力するか、容量(ml)を直接入力するかを選びます。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "容器のサイズまたは容量を入力",
+                "text": "円柱の場合は直径と高さ、四角柱の場合は横幅・奥行・高さをcm単位で入力します。または容量をml単位で入力します。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "作成個数を入力",
+                "text": "複数個作成する場合は個数を入力します。合計量が自動計算されます。"
+            },
+            {
+                "@type": "HowToStep",
+                "position": 5,
+                "name": "計算結果を確認",
+                "text": "必要なワックスとアロマオイルの量がグラム単位で表示されます。"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fffaf0;
+            color: #5d4037;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #8d6e63;
+            border-bottom: 2px solid #d7ccc8;
+            padding-bottom: 10px;
+        }
+
+        .form-section {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #8d6e63;
+            outline: none;
+        }
+
+        .input-mode {
+            display: none;
+        }
+
+        .input-mode.active {
+            display: block;
+        }
+
+        .shape-inputs {
+            display: none;
+        }
+
+        .shape-inputs.active {
+            display: block;
+        }
+
+        .result-box {
+            background-color: #efebe9;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .result-main {
+            font-size: 32px;
+            font-weight: bold;
+            color: #5d4037;
+        }
+
+        .result-total {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px dashed #d7ccc8;
+        }
+
+        .result-total-label {
+            font-size: 12px;
+            color: #8d6e63;
+            margin-bottom: 5px;
+        }
+
+        .btn-clear {
+            width: 100%;
+            padding: 14px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-clear:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-clear:active {
+            transform: translateY(2px);
+        }
+
+        .affiliate-area {
+            margin-top: 25px;
+            text-align: center;
+            display: none;
+        }
+
+        .link-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #8d6e63;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .link-btn:hover {
+            opacity: 0.9;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .hint {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .quantity-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-row input {
+            width: 80px;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .quantity-row span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🕯️ キャンドルワックス計算機</h1>
+
+        <div class="form-section">
+            <label>ワックスの種類</label>
+            <select id="waxType" onchange="calculate()">
+                <option value="0.9">ソイワックス (比重 0.90)</option>
+                <option value="0.9">パラフィンワックス (比重 0.90)</option>
+                <option value="0.96">ミツロウ (比重 0.96)</option>
+                <option value="0.86">ジェルワックス (比重 0.86)</option>
+            </select>
+        </div>
+
+        <div class="form-section">
+            <label>入力方法</label>
+            <select id="inputMode" onchange="toggleInputMode()">
+                <option value="size">容器のサイズを入力</option>
+                <option value="volume">容量(ml)を直接入力</option>
+            </select>
+
+            <!-- サイズ入力モード -->
+            <div id="mode-size" class="input-mode active">
+                <label style="margin-top:15px;">容器のカタチ</label>
+                <select id="shapeType" onchange="toggleShape()">
+                    <option value="cylinder">円柱（グラスなど）</option>
+                    <option value="square">四角柱（ボックスなど）</option>
+                </select>
+
+                <div id="input-cylinder" class="shape-inputs active">
+                    <label>容器の直径 (cm)</label>
+                    <input type="number" id="diameter" placeholder="例: 7.5" min="0" step="0.1" oninput="calculate()">
+                    <label>入れたい高さ (cm)</label>
+                    <input type="number" id="height_c" placeholder="例: 8" min="0" step="0.1" oninput="calculate()">
+                </div>
+
+                <div id="input-square" class="shape-inputs">
+                    <label>横幅 (cm)</label>
+                    <input type="number" id="width" placeholder="例: 5" min="0" step="0.1" oninput="calculate()">
+                    <label>奥行 (cm)</label>
+                    <input type="number" id="depth" placeholder="例: 5" min="0" step="0.1" oninput="calculate()">
+                    <label>入れたい高さ (cm)</label>
+                    <input type="number" id="height_s" placeholder="例: 8" min="0" step="0.1" oninput="calculate()">
+                </div>
+            </div>
+
+            <!-- 容量入力モード -->
+            <div id="mode-volume" class="input-mode">
+                <label style="margin-top:15px;">容器の容量 (ml)</label>
+                <div class="hint">※容器に記載されている容量を入力</div>
+                <input type="number" id="volumeMl" placeholder="例: 200" min="0" step="1" oninput="calculate()">
+            </div>
+        </div>
+
+        <div class="form-section">
+            <label>作成する個数</label>
+            <div class="quantity-row">
+                <input type="number" id="quantity" value="1" min="1" max="100" oninput="calculate()">
+                <span>個</span>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <label>アロマオイルの配合率 (%)</label>
+            <div class="hint">※通常は5%〜10%が目安です</div>
+            <input type="number" id="fragranceLoad" placeholder="例: 5" value="0" min="0" max="15" step="0.5"
+                oninput="calculate()">
+        </div>
+
+        <button class="btn-clear" onclick="clearAll()">クリア</button>
+
+        <div class="result-box" id="resultArea">
+            <div style="font-weight:bold; margin-bottom:10px;">1個あたりの分量</div>
+
+            ワックス：<span class="result-main" id="resWax">0</span> g<br>
+
+            <div id="oilResult" style="margin-top:10px;">
+                アロマオイル：<span class="result-main" id="resOil" style="font-size:24px; color:#e91e63;">0</span> g
+            </div>
+
+            <div class="result-total" id="totalResult" style="display:none;">
+                <div class="result-total-label">📦 <span id="quantityLabel">0</span>個分の合計</div>
+                ワックス：<span class="result-main" id="resTotalWax" style="font-size:28px;">0</span> g<br>
+                <span id="totalOilResult">
+                    アロマオイル：<span class="result-main" id="resTotalOil" style="font-size:22px; color:#e91e63;">0</span> g
+                </span>
+            </div>
+        </div>
+
+        <div class="affiliate-area" id="affiliateArea">
+            <a href="https://www.amazon.co.jp/s?k=ソイワックス&tag=YOUR_ID" target="_blank"
+                class="link-btn">Amazonでワックスを探す</a>
+            <a href="https://search.rakuten.co.jp/search/mall/アロマオイル+キャンドル用/" target="_blank" class="link-btn"
+                style="background:#bf0000;">楽天でオイルを探す</a>
+        </div>
+
+        <p class="note">
+            ※比重を考慮した計算です。<br>
+            ※計算結果は目安です。実際の使用量は若干異なる場合があります。
+        </p>
+    </div>
+
+    <script>
+        function toggleInputMode() {
+            const mode = document.getElementById('inputMode').value;
+            document.getElementById('mode-size').classList.remove('active');
+            document.getElementById('mode-volume').classList.remove('active');
+
+            if (mode === 'size') {
+                document.getElementById('mode-size').classList.add('active');
+            } else {
+                document.getElementById('mode-volume').classList.add('active');
+            }
+            calculate();
+        }
+
+        function toggleShape() {
+            const shape = document.getElementById('shapeType').value;
+            document.getElementById('input-cylinder').classList.remove('active');
+            document.getElementById('input-square').classList.remove('active');
+
+            if (shape === 'cylinder') {
+                document.getElementById('input-cylinder').classList.add('active');
+            } else {
+                document.getElementById('input-square').classList.add('active');
+            }
+            calculate();
+        }
+
+        function calculate() {
+            const specificGravity = parseFloat(document.getElementById('waxType').value);
+            const inputMode = document.getElementById('inputMode').value;
+            const fragrancePercent = parseFloat(document.getElementById('fragranceLoad').value) || 0;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+            let volume = 0;
+
+            if (inputMode === 'volume') {
+                // 容量(ml)直接入力モード
+                const ml = parseFloat(document.getElementById('volumeMl').value);
+                if (!ml || ml < 0) return hideResult();
+                volume = ml; // 1ml = 1cm³
+            } else {
+                // サイズ入力モード
+                const shape = document.getElementById('shapeType').value;
+                if (shape === 'cylinder') {
+                    const d = parseFloat(document.getElementById('diameter').value);
+                    const h = parseFloat(document.getElementById('height_c').value);
+                    if (!d || !h || d < 0 || h < 0) return hideResult();
+                    const r = d / 2;
+                    volume = r * r * Math.PI * h;
+                } else {
+                    const w = parseFloat(document.getElementById('width').value);
+                    const dep = parseFloat(document.getElementById('depth').value);
+                    const h = parseFloat(document.getElementById('height_s').value);
+                    if (!w || !dep || !h || w < 0 || dep < 0 || h < 0) return hideResult();
+                    volume = w * dep * h;
+                }
+            }
+
+            const totalWeight = volume * specificGravity;
+
+            let oilWeight = 0;
+            let waxWeight = totalWeight;
+
+            if (fragrancePercent > 0) {
+                oilWeight = totalWeight * (fragrancePercent / 100);
+                waxWeight = totalWeight - oilWeight;
+            }
+
+            // 1個あたりの結果
+            document.getElementById('resWax').innerText = Math.ceil(waxWeight);
+            document.getElementById('resOil').innerText = Math.ceil(oilWeight * 10) / 10;
+
+            // 合計（複数個の場合）
+            if (quantity > 1) {
+                document.getElementById('totalResult').style.display = 'block';
+                document.getElementById('quantityLabel').innerText = quantity;
+                document.getElementById('resTotalWax').innerText = Math.ceil(waxWeight * quantity);
+                document.getElementById('resTotalOil').innerText = Math.ceil(oilWeight * quantity * 10) / 10;
+
+                if (fragrancePercent > 0) {
+                    document.getElementById('totalOilResult').style.display = 'inline';
+                } else {
+                    document.getElementById('totalOilResult').style.display = 'none';
+                }
+            } else {
+                document.getElementById('totalResult').style.display = 'none';
+            }
+
+            document.getElementById('resultArea').style.display = 'block';
+            document.getElementById('affiliateArea').style.display = 'block';
+
+            if (fragrancePercent > 0) {
+                document.getElementById('oilResult').style.display = 'block';
+            } else {
+                document.getElementById('oilResult').style.display = 'none';
+            }
+        }
+
+        function hideResult() {
+            document.getElementById('resultArea').style.display = 'none';
+            document.getElementById('affiliateArea').style.display = 'none';
+        }
+
+        function clearAll() {
+            document.getElementById('diameter').value = '';
+            document.getElementById('height_c').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('depth').value = '';
+            document.getElementById('height_s').value = '';
+            document.getElementById('volumeMl').value = '';
+            document.getElementById('fragranceLoad').value = '0';
+            document.getElementById('quantity').value = '1';
+            document.getElementById('waxType').selectedIndex = 0;
+            document.getElementById('shapeType').selectedIndex = 0;
+            document.getElementById('inputMode').selectedIndex = 0;
+            toggleInputMode();
+            toggleShape();
+            hideResult();
+        }
+    </script>
+
+</body>
+
+</html>
